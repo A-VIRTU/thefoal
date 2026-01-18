@@ -1,4 +1,4 @@
-/* 
+/*
  * LAYOUT (Golden Grid)
  */
 .layout-wrapper {
@@ -7,6 +7,55 @@
     position: relative;
     padding: var(--layout-padding-y) var(--layout-padding-x);
     box-sizing: border-box;
+}
+
+/* FOOTER */
+.footer-strip {
+    height: var(--u7);
+    display: flex;
+    align-items: center;
+    border-top: 1px solid var(--c-line);
+    margin-top: auto;
+    padding-left: var(--layout-padding-x);
+}
+
+/* VIDEO GATE STRICT */
+.video-gate-container {
+    margin-top: var(--u4);
+    border: 1px solid var(--c-line);
+    max-width: 600px;
+    transition: border-color var(--time-base) ease;
+}
+
+.video-gate-container.is-active {
+    border-color: var(--c-line); /* Or signal if desired, but user requested subtle */
+}
+
+.gate-video-element {
+    opacity: var(--op-base); /* was 0.5 */
+    transition: opacity var(--time-base) ease;
+    width: 100%;
+    display: block;
+}
+
+.video-gate-container.is-active .gate-video-element {
+    opacity: var(--op-active);
+}
+
+.gate-text-overlay {
+    font-family: var(--font-mono);
+    font-size: var(--f-mono); /* was 0.8rem */
+    letter-spacing: var(--ls-wider);
+}
+
+.video-gate-container.is-active .play-text {
+    color: var(--c-signal);
+    border-color: var(--c-signal);
+}
+
+.video-gate-container:not(.is-active) .play-text {
+    color: var(--c-accent);
+    border-color: var(--c-dim);
 }
 
 .golden-grid {
@@ -42,7 +91,7 @@
     font-style: italic;
 }
 
-/* Footer override */
+/* FOOTER */
 .footer-info {
     font-family: var(--font-mono);
     font-size: var(--f-small);
@@ -55,6 +104,16 @@
     flex-wrap: wrap;
     gap: var(--u6);
     width: 100%;
+}
+
+.poster-sidebar {
+    padding-bottom: var(--u4);
+}
+
+.poster-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .footer-col {

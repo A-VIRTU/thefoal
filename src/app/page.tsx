@@ -10,6 +10,9 @@ const PLAYLIST = [
   "/assets/video/Abstract_Monolith_Video_Generation.mp4",
 ];
 
+// STRICT MATH CONSTANTS
+const PHI_INV = 0.618;
+
 export default function Home() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -21,11 +24,18 @@ export default function Home() {
   const handleVideoEnded = () => {
     if (!isPlaying || !videoRef.current) return;
 
-    // 1. Cut to black
-    videoRef.current.style.opacity = "0";
+    // 1. Cut to black (handled via opacity transition if needed, or conceptually)
+    // For strict glitch, we might want to manually toggle a class or just let the switch happen.
+    // Given the previous logic used opacity: 0, we can enforce that via inline ONLY for the glitch moment 
+    // OR add a 'glitch' class. Let's keep it simple for now and rely on the natural cut.
+    // Optimally, we'd add a 'is-glitching' state, but let's stick to the core requirement: NO MAGIC NUMBERS.
+    
+    videoRef.current.style.opacity = "0"; // Temporary glitch effect
 
-    // 2. Glitch pause (Random 0.5s - 2.0s)
-    const glitchPause = Math.floor(Math.random() * 1500) + 500;
+    // 2. Glitch pause (Strict Phi-Based Timing)
+    // TIMINGS: 382ms (Fast), 618ms (Base), 1618ms (Slow)
+    const phiTimings = [382, 618, 1618];
+    const glitchPause = phiTimings[Math.floor(Math.random() * phiTimings.length)];
 
     setTimeout(() => {
       if (!isPlaying || !videoRef.current) return;
@@ -33,7 +43,6 @@ export default function Home() {
       // 3. Next track index
       const nextIndex = (currentTrackIndex + 1) % PLAYLIST.length;
       setCurrentTrackIndex(nextIndex); 
-      // Triggers useEffect to load new source
       
     }, glitchPause);
   };
@@ -48,7 +57,7 @@ export default function Home() {
       if (playPromise !== undefined) {
         playPromise
           .then(() => {
-            if (videoRef.current) videoRef.current.style.opacity = "0.9";
+            if (videoRef.current) videoRef.current.style.opacity = ""; // Remove inline override to revert to class
           })
           .catch((error) => console.error("Video play error:", error));
       }
@@ -61,14 +70,11 @@ export default function Home() {
     if (!isPlaying) {
       // START SYSTEM
       audioRef.current.play().catch((e) => console.error("Audio play failed", e));
-      audioRef.current.volume = 0.5;
+      audioRef.current.volume = PHI_INV;
       
       setSystemText("[ LOADING FRAGMENTS... ]");
       setIsPlaying(true);
       setCurrentTrackIndex(0);
-
-      // Initial visual state
-      videoRef.current.style.opacity = "0.9";
 
       // Delayed status update
       setTimeout(() => {
@@ -83,111 +89,62 @@ export default function Home() {
       
       setIsPlaying(false);
       setSystemText("[ INITIATE SEQUENCE ]");
-      videoRef.current.style.opacity = "0.6"; // Dimmed state
     }
   };
 
   return (
-    <div className="layout-wrapper" style={{ minHeight: "100vh" }}>
-      <div className="golden-grid" style={{ minHeight: "100vh" }}>
+    <div className="layout-wrapper">
+      <div className="golden-grid">
         
         {/* SIDE COLUMN: STRICT METADATA */}
-        <div 
-            className="col-side" 
-            style={{ 
-                display: "flex", 
-                flexDirection: "column", 
-                justifyContent: "flex-end", 
-                paddingBottom: "var(--u4)" 
-            }}
-        >
-            <div style={{ 
-                fontFamily: "var(--font-mono)", 
-                fontSize: "0.7rem", 
-                color: "var(--c-gray)", 
-                lineHeight: "1.8", 
-                textTransform: "uppercase", 
-                letterSpacing: "0.05em" 
-            }}>
-                <strong style={{ color: "var(--c-ink)", borderBottom: "1px solid var(--c-line)" }}>COORDINATES</strong><br />
+        <div className="col-side poster-sidebar">
+            <div className="credits-block">
+                <strong className="credits-header">COORDINATES</strong><br />
                 LOC: BRNO-BYSTRC / SECTOR C<br />
                 DATE: 01.05.2026 — 15.10.2026<br />
-                STATUS: <span style={{ color: isPlaying ? "var(--c-signal)" : "var(--c-gray)" }}>
+                STATUS: <span className={isPlaying ? "status-active" : "status-standby"}>
                     {isPlaying ? "ACTIVE PHASE" : "STANDBY"}
                 </span><br /><br />
 
-                <strong style={{ color: "var(--c-ink)", borderBottom: "1px solid var(--c-line)" }}>PRODUCTION</strong><br />
+                <strong className="credits-header">PRODUCTION</strong><br />
                 A VIRTÙ RESEARCH & TECHNOLOGIES<br />
                 COLL. TAECAR ARCHIVE<br /><br />
 
-                <strong style={{ color: "var(--c-ink)", borderBottom: "1px solid var(--c-line)" }}>PARTNERSHIP</strong><br />
+                <strong className="credits-header">PARTNERSHIP</strong><br />
                 SUPPORT: MČ BRNO-BYSTRC<br />
                 REPR.: KARPUCHINA GALLERY
             </div>
         </div>
 
         {/* MAIN COLUMN: POSTER TITLE + GATE */}
-        <div 
-            className="col-main" 
-            style={{ 
-                display: "flex", 
-                flexDirection: "column", 
-                justifyContent: "center" 
-            }}
-        >
+        <div className="col-main poster-main">
             
-            <h3 style={{ 
-                fontFamily: "var(--font-heading)", 
-                fontWeight: 300, 
-                fontSize: "clamp(1rem, 2vw, 2rem)", 
-                margin: "0 0 var(--u6) 0", 
-                color: "var(--c-gray)", 
-                letterSpacing: "0.4em", 
-                textTransform: "uppercase" 
-            }}>
+            <h3 className="poster-concept">
                 MARGARITA IVY'S CONCEPT
             </h3>
 
-            <h1 style={{ 
-                fontSize: "var(--f-poster)", 
-                margin: 0, 
-                lineHeight: "0.8", 
-                letterSpacing: "-0.02em", /* Slightly condensed as per request */
-                color: "var(--c-ink)" 
-            }}>
+            <h1 className="poster-headline">
                 THE<br />
                 FOAL
             </h1>
 
             <div 
-                className="video-gate" 
+                className={`video-gate video-gate-container ${isPlaying ? "is-active" : ""}`}
                 id="videoTrigger" 
                 onClick={handleGateClick}
-                style={{ 
-                    marginTop: "var(--u5)", 
-                    borderColor: isPlaying ? "var(--c-line)" : "var(--c-line)" 
-                }}
             >
                 <video 
                     ref={videoRef}
                     muted 
                     playsInline 
-                    className="gate-video"
+                    className="gate-video gate-video-element"
                     onEnded={handleVideoEnded}
-                    style={{ opacity: isPlaying ? 0.9 : 0.6 }}
                 >
                     <source src={PLAYLIST[0]} type="video/mp4" />
                 </video>
                 
                 <div className="gate-overlay">
-                    <span 
-                        className="play-text" 
-                        style={{ 
-                            fontFamily: "var(--font-mono)",
-                            color: isPlaying ? "var(--c-signal)" : "var(--c-accent)",
-                            borderColor: isPlaying ? "var(--c-signal)" : "var(--c-dim)"
-                        }}
-                    >
+                    <span className="play-text gate-text-overlay">
                         {systemText}
                     </span>
                 </div>
