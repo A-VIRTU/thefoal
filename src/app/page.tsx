@@ -173,6 +173,13 @@ export default function Home() {
             <br />
             & Technologies
           </div>
+          <div className="footer-col" style={{ opacity: 0.8, color: "#fff" }}>
+            <strong>Global Representation:</strong>
+            <br />
+            Karpuchina Gallery
+            <br />
+            Prague / Vienna
+          </div>
         </div>
       </section>
     </>
