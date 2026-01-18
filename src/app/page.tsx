@@ -88,8 +88,8 @@ export default function Home() {
   };
 
   return (
-    <div className="layout-wrapper" style={{ height: "100vh", overflow: "hidden" }}>
-      <div className="golden-grid" style={{ height: "100%" }}>
+    <div className="layout-wrapper" style={{ minHeight: "100vh" }}>
+      <div className="golden-grid" style={{ minHeight: "100vh" }}>
         
         {/* SIDE COLUMN: STRICT METADATA */}
         <div 
