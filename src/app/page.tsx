@@ -103,22 +103,26 @@ export default function Home() {
         >
             <div style={{ 
                 fontFamily: "var(--font-mono)", 
-                fontSize: "0.75rem", 
+                fontSize: "0.7rem", 
                 color: "var(--c-gray)", 
-                lineHeight: "1.6", 
+                lineHeight: "1.8", 
                 textTransform: "uppercase", 
-                letterSpacing: "0.1em" 
+                letterSpacing: "0.05em" 
             }}>
-                <strong style={{ color: "var(--c-ink)" }}>Margarita Ivy</strong><br />
-                <span style={{ display: "block", marginTop: "var(--u7)" }}>Object No. 1</span>
-                Status: <span style={{ color: isPlaying ? "var(--c-signal)" : "var(--c-gray)" }}>
-                    {isPlaying ? "Active" : "Standby"}
-                </span><br />
-                Sector: Brno-Bystrc / C<br />
-                Start: 01.05.2026
-                <br /><br />
-                <span style={{ opacity: 0.5 }}>Representation:</span><br />
-                Karpuchina Gallery
+                <strong style={{ color: "var(--c-ink)", borderBottom: "1px solid var(--c-line)" }}>COORDINATES</strong><br />
+                LOC: BRNO-BYSTRC / SECTOR C<br />
+                DATE: 01.05.2026 — 15.10.2026<br />
+                STATUS: <span style={{ color: isPlaying ? "var(--c-signal)" : "var(--c-gray)" }}>
+                    {isPlaying ? "ACTIVE PHASE" : "STANDBY"}
+                </span><br /><br />
+
+                <strong style={{ color: "var(--c-ink)", borderBottom: "1px solid var(--c-line)" }}>PRODUCTION</strong><br />
+                A VIRTÙ RESEARCH & TECHNOLOGIES<br />
+                COLL. TAECAR ARCHIVE<br /><br />
+
+                <strong style={{ color: "var(--c-ink)", borderBottom: "1px solid var(--c-line)" }}>PARTNERSHIP</strong><br />
+                SUPPORT: MČ BRNO-BYSTRC<br />
+                REPR.: KARPUCHINA GALLERY
             </div>
         </div>
 
@@ -132,11 +136,23 @@ export default function Home() {
             }}
         >
             
+            <h3 style={{ 
+                fontFamily: "var(--font-heading)", 
+                fontWeight: 300, 
+                fontSize: "clamp(1rem, 2vw, 2rem)", 
+                margin: "0 0 var(--u6) 0", 
+                color: "var(--c-gray)", 
+                letterSpacing: "0.4em", 
+                textTransform: "uppercase" 
+            }}>
+                MARGARITA IVY'S CONCEPT
+            </h3>
+
             <h1 style={{ 
                 fontSize: "var(--f-poster)", 
                 margin: 0, 
                 lineHeight: "0.8", 
-                letterSpacing: "-0.04em", 
+                letterSpacing: "-0.02em", /* Slightly condensed as per request */
                 color: "var(--c-ink)" 
             }}>
                 THE<br />
