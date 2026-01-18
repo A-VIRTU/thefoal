@@ -1,0 +1,70 @@
+/* 
+ * THE FOAL VARIABLES (Void / Math)
+ */
+:root {
+    /* MATHEMATICAL CONSTANTS */
+    --phi: 1.61803398875;
+    --phi-inv: 0.61803398875;
+    --phi-inv-2: 0.38196601125;
+    --phi-inv-3: 0.2360679775;
+    --phi-inv-4: 0.14589803375;
+    --phi-inv-5: 0.09016994375;
+
+    /* UNIT SCALE (DIMENSIONS) - Base: 100vw */
+    --u0: 100vw;
+    --u1: calc(var(--u0) * var(--phi-inv));
+    --u2: calc(var(--u1) * var(--phi-inv));
+    --u3: calc(var(--u2) * var(--phi-inv));
+    --u4: calc(var(--u3) * var(--phi-inv));
+    --u5: calc(var(--u4) * var(--phi-inv));
+    --u6: calc(var(--u5) * var(--phi-inv));
+    --u7: calc(var(--u6) * var(--phi-inv));
+    --u8: calc(var(--u7) * var(--phi-inv));
+    --u9: calc(var(--u8) * var(--phi-inv));
+    --u10: calc(var(--u9) * var(--phi-inv));
+    --u11: calc(var(--u10) * var(--phi-inv));
+    --u12: calc(var(--u11) * var(--phi-inv));
+    --u13: calc(var(--u12) * var(--phi-inv));
+    --u14: calc(var(--u13) * var(--phi-inv));
+    --u15: calc(var(--u14) * var(--phi-inv));
+
+    /* LINES (Derived from Phi-inv scale of 1rem/16px base roughly) */
+    --line-thin: 1px; 
+    --line-medium: 2px;
+    --line-thick: 4px;
+
+    /* VOID PALETTE */
+    --c-bg: #050505;       /* Void Black */
+    --c-ink: #e0e0e0;      /* Muted White Text */
+    --c-dim: #555555;      /* Dimmed elements */
+    --c-line: #333333;     /* Subtle Grid Lines */
+    
+    /* ACCENTS */
+    --c-accent: #ffffff;   /* 100% White (Light) */
+    --c-signal: #00ff00;   /* Terminal Green (Active) */
+
+    /* ANIMATION TIMINGS */
+    --time-fast: 0.382s;
+    --time-base: 0.618s;
+    --time-slow: 1.618s;
+
+    /* SPACING */
+    --space-section: var(--u4);
+    --space-block: var(--u5);
+    --space-line: var(--u7);
+    --space-item: var(--u8);
+    --space-text: var(--u9);
+    --space-page: var(--u6);
+    
+    /* LAYOUT VARS */
+    --layout-padding-x: var(--u6);
+    --layout-padding-y: var(--u6);
+    --content-max-width: 100%;
+}
+
+@media (min-width: 768px) {
+    :root {
+        --layout-padding-x: var(--u5);
+        --layout-padding-y: var(--u5);
+    }
+}

@@ -34,12 +34,10 @@ export default function Home() {
       const nextIndex = (currentTrackIndex + 1) % PLAYLIST.length;
       setCurrentTrackIndex(nextIndex); // Triggers useEffect to load new source
       
-      // Note: The unexpected play logic is handled in the useEffect below
-      // to ensure state synchronization
     }, glitchPause);
   };
 
-  // Effect to load and play video when track changes (only if system is active)
+  // Effect to load and play video when track changes
   useEffect(() => {
     if (isPlaying && videoRef.current) {
       videoRef.current.src = PLAYLIST[currentTrackIndex];
@@ -74,7 +72,7 @@ export default function Home() {
 
       // Delayed status update
       setTimeout(() => {
-        if (isPlaying) return; // Don't overwrite if stopped
+        if (isPlaying) return;
         setSystemText("[ SYSTEM ACTIVE :: OBSERVING ]");
       }, 2000);
 
@@ -90,98 +88,112 @@ export default function Home() {
   };
 
   return (
-    <>
-      <section className="title-screen">
-        <h1>Margarita Ivy's Concept</h1>
-        <h2>THE FOAL</h2>
-        <span>1. 5. — 15. 10. 2026</span>
-        <div className="scroll-line"></div>
-      </section>
+    <div className="layout-wrapper">
+      <div className="golden-grid">
+        
+        {/* SIDE COLUMN (Metadata) */}
+        <div className="col-side mb-u4">
+            <div className="meta-data mb-u4">
+                LOC: BRNO-BYSTRC<br/>
+                SEC: C (GRASS)<br/>
+                ID: THE FOAL
+            </div>
+            <div className="meta-data">
+                DATE: 1.5. — 15.10.2026
+            </div>
+            <div className="scroll-line"></div>
+        </div>
 
-      <section>
-        <p>It is not a sculpture. It is a glitch in reality.</p>
-        <p>
-          Within the cyclic noise of the urban periphery,{" "}
-          <span className="highlight">The Foal</span> creates a zone of absolute
-          silence. A forensic record of time. 700 kilograms of transparent
-          matter preserving a moment of interrupted life.
-        </p>
-        <p>An object that does not belong here, yet must be here.</p>
+        {/* MAIN COLUMN (Content) */}
+        <div className="col-main">
+            
+            {/* Header */}
+            <section className="mb-u5">
+                <h1>Margarita Ivy's Concept</h1>
+                <p className="is-style-dialog-question">The Glitch in Reality.</p> 
+            </section>
 
-        {/* VIDEO GATE */}
-        <div 
-          className="video-gate" 
-          id="videoTrigger" 
-          onClick={handleGateClick}
-          style={{ borderColor: isPlaying ? '#00ff00' : '' }}
-        >
-          <video 
-            ref={videoRef}
-            muted // Muted needed for autoplay if we were auto-starting, but we are click-to-start. Kept for safety.
-            playsInline 
-            className="gate-video"
-            onEnded={handleVideoEnded}
-            style={{ opacity: isPlaying ? 0.9 : 0.6 }}
-          >
-            {/* Initial source, will be swapped by state */}
-            <source src={PLAYLIST[0]} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          
-          <div className="gate-overlay">
-            <span className="play-text">Initiate Sequence</span>
-            <span 
-              className="sub-text"
-              style={{ color: isPlaying ? '#00ff00' : 'var(--dim-color)' }}
+            {/* Video Gate */}
+            <div 
+              className="video-gate mb-u4" 
+              id="videoTrigger" 
+              onClick={handleGateClick}
+              style={{ borderColor: isPlaying ? 'var(--c-signal)' : '' }}
             >
-              {systemText}
-            </span>
-          </div>
-        </div>
+              <video 
+                ref={videoRef}
+                muted 
+                playsInline 
+                className="gate-video"
+                onEnded={handleVideoEnded}
+                style={{ opacity: isPlaying ? 0.9 : 0.6 }}
+              >
+                <source src={PLAYLIST[0]} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              
+              <div className="gate-overlay">
+                <span className="play-text">Initiate Sequence</span>
+                <span 
+                  className="sub-text"
+                  style={{ color: isPlaying ? 'var(--c-signal)' : 'var(--c-ink)' }}
+                >
+                  {systemText}
+                </span>
+              </div>
+            </div>
 
-        <audio id="ambientAudio" loop ref={audioRef}>
-            <source src="vacuum-sound.mp3" type="audio/mpeg" />
-        </audio>
-      </section>
+            <audio id="ambientAudio" loop ref={audioRef}>
+                <source src="vacuum-sound.mp3" type="audio/mpeg" />
+            </audio>
 
-      <section
-        style={{
-          minHeight: "50vh",
-          justifyContent: "flex-end",
-          paddingBottom: "4rem",
-        }}
-      >
-        <div className="footer-info">
-          <div className="footer-col">
-            <strong>Lokace:</strong>
-            <br />
-            Horní náměstí (Sektor C)
-            <br />
-            Brno-Bystrc, CZ
-          </div>
-          <div className="footer-col">
-            <strong>Status:</strong>
-            <br />
-            Veřejná intervence
-            <br />
-            Sbírka TAECAR
-          </div>
-          <div className="footer-col">
-            <strong>Produkce:</strong>
-            <br />
-            A Virtù Research
-            <br />
-            & Technologies
-          </div>
-          <div className="footer-col" style={{ opacity: 0.8, color: "#fff" }}>
-            <strong>Global Representation:</strong>
-            <br />
-            Karpuchina Gallery
-            <br />
-            Prague / Vienna
-          </div>
+            {/* Content Body */}
+            <div className="mb-u5">
+                <p>It is not a sculpture. It is a glitch in reality.</p>
+                <p>
+                  Within the cyclic noise of the urban periphery,{" "}
+                  <span className="highlight">The Foal</span> creates a zone of absolute
+                  silence. A forensic record of time. 700 kilograms of transparent
+                  matter preserving a moment of interrupted life.
+                </p>
+                <p>An object that does not belong here, yet must be here.</p>
+            </div>
+
+            {/* Footer */}
+            <div className="footer-info">
+              <div className="footer-col">
+                <strong>Lokace:</strong>
+                <br />
+                Horní náměstí (Sektor C)
+                <br />
+                Brno-Bystrc, CZ
+              </div>
+              <div className="footer-col">
+                <strong>Status:</strong>
+                <br />
+                Veřejná intervence
+                <br />
+                Sbírka TAECAR
+              </div>
+              <div className="footer-col">
+                <strong>Produkce:</strong>
+                <br />
+                A Virtù Research
+                <br />
+                & Technologies
+              </div>
+              <div className="footer-col" style={{ opacity: 0.8, color: "#fff" }}>
+                <strong>Global Representation:</strong>
+                <br />
+                Karpuchina Gallery
+                <br />
+                Prague / Vienna
+              </div>
+            </div>
+
         </div>
-      </section>
-    </>
+        
+      </div>
+    </div>
   );
 }

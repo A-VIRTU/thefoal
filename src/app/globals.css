@@ -1,101 +1,47 @@
-:root {
-  --bg-color: #050505;
-  --text-color: #e0e0e0;
-  --dim-color: #555;
-  --foreground: var(--text-color);
-  --background: var(--bg-color);
-}
+@import './styles/variables.css';
+@import './styles/typography.css';
+@import './styles/layout.css';
 
-body, html {
+/* GLOBAL RESETS & COMPONENT SPECIFICS */
+html, body {
   margin: 0;
   padding: 0;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: 'Times New Roman', serif;
-  height: 100%;
   scroll-behavior: smooth;
+  background-color: var(--c-bg); /* Ensure background is set */
 }
 
-/* TYPOGRAPHY */
-h1 {
-  font-weight: 400;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  font-size: 1rem;
-  margin-bottom: 2rem;
-  color: #fff;
+* {
+  box-sizing: border-box;
 }
 
-p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  max-width: 600px;
-  margin: 0 auto 1.5rem auto;
-  color: #ccc;
-}
-
-.highlight {
-  color: #fff;
-  font-style: italic;
-}
-
-/* SECTIONS */
-section {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
-  position: relative;
-}
-
-/* SCENE 1: TITLE */
-.title-screen h2 {
-  font-size: 3rem;
-  font-weight: 300;
-  letter-spacing: 0.1em;
-  margin: 0;
-}
-
-.title-screen span {
-  display: block;
-  font-size: 0.8rem;
-  color: var(--dim-color);
-  margin-top: 1rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-}
-
-/* VIDEO GATE STYLING */
+/* VIDEO GATE (Ported & Adapted to Variables) */
 .video-gate {
-  border: 1px solid var(--dim-color);
+  border: var(--line-thin) solid var(--c-line);
   width: 100%;
-  max-width: 600px; /* Šířka brány */
-  height: 340px;    /* Výška brány */
+  max-width: 100%; 
+  height: var(--u3); /* Golden Ratio height */
+  min-height: var(--u4); /* Replaces 300px */
   position: relative;
-  overflow: hidden; /* Ořízne vše, co přečuhuje */
+  overflow: hidden;
   cursor: pointer;
-  transition: border-color 0.5s ease;
-  margin-top: 2rem;
+  transition: border-color var(--time-base) ease;
   background: #000;
 }
 
 .video-gate:hover {
-  border-color: #fff;
+  border-color: var(--c-accent);
 }
 
 .gate-video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Video vyplní rámeček bez deformace */
-  opacity: 0.6;      /* Lehce ztmavíme, aby to bylo tajemné */
-  transition: opacity 0.5s ease;
+  object-fit: cover;
+  opacity: 0.6;
+  transition: opacity var(--time-base) ease;
 }
 
 .video-gate:hover .gate-video {
-  opacity: 0.9;      /* Po najetí myší se video rozjasní */
+  opacity: 0.9;
 }
 
 .gate-overlay {
@@ -109,50 +55,37 @@ section {
   justify-content: center;
   align-items: center;
   z-index: 2;
-  pointer-events: none; /* Kliknutí projde skrz text */
+  pointer-events: none;
 }
 
 .play-text {
-  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: var(--f-small);
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  background: rgba(0,0,0,0.5); /* Čitelnost na videu */
-  padding: 5px 10px;
-  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(0,0,0,0.7);
+  padding: var(--u10) var(--u9); /* Replaces 5px 10px */
+  border: var(--line-thin) solid rgba(255,255,255,0.3);
+  color: var(--c-accent);
 }
 
 .sub-text {
-  font-size: 0.6rem;
-  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: var(--f-small); /* Replaces 0.7em */
+  margin-top: var(--u9); /* Replaces 10px */
   letter-spacing: 0.1em;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
-/* SCROLL INDICATOR */
+/* SCROLL LINE */
 .scroll-line {
-  position: absolute;
-  bottom: 0;
-  width: 1px;
-  height: 100px;
-  background: linear-gradient(to bottom, var(--text-color), transparent);
+  width: var(--line-thin);
+  height: var(--u4);
+  background: linear-gradient(to bottom, var(--c-ink), transparent);
+  margin-top: var(--u7);
 }
 
-/* FOOTER (CZECH REALITY) */
-.footer-info {
-  font-family: 'Helvetica', 'Arial', sans-serif; /* Sans-serif pro data */
-  font-size: 0.7rem;
-  color: var(--dim-color);
-  margin-top: 4rem;
-  border-top: 1px solid #222;
-  padding-top: 2rem;
-  width: 100%;
-  max-width: 800px;
-  display: flex;
-  justify-content: space-between;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.footer-col {
-  text-align: left;
+.highlight {
+    color: var(--c-accent);
+    font-style: italic;
 }
