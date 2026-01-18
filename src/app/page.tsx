@@ -15,7 +15,7 @@ export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-  const [systemText, setSystemText] = useState("[ SOUND OFF ]");
+  const [systemText, setSystemText] = useState("[ INITIATE SEQUENCE ]");
 
   // Handle Video End -> Glitch -> Next Video
   const handleVideoEnded = () => {
@@ -28,11 +28,12 @@ export default function Home() {
     const glitchPause = Math.floor(Math.random() * 1500) + 500;
 
     setTimeout(() => {
-      if (!isPlaying || !videoRef.current) return; // Check if still playing
+      if (!isPlaying || !videoRef.current) return;
 
       // 3. Next track index
       const nextIndex = (currentTrackIndex + 1) % PLAYLIST.length;
-      setCurrentTrackIndex(nextIndex); // Triggers useEffect to load new source
+      setCurrentTrackIndex(nextIndex); 
+      // Triggers useEffect to load new source
       
     }, glitchPause);
   };
@@ -47,7 +48,6 @@ export default function Home() {
       if (playPromise !== undefined) {
         playPromise
           .then(() => {
-            // 5. Fade in when actually playing
             if (videoRef.current) videoRef.current.style.opacity = "0.9";
           })
           .catch((error) => console.error("Video play error:", error));
@@ -63,9 +63,9 @@ export default function Home() {
       audioRef.current.play().catch((e) => console.error("Audio play failed", e));
       audioRef.current.volume = 0.5;
       
-      setSystemText("[ LOADING DATA FRAGMENTS... ]");
+      setSystemText("[ LOADING FRAGMENTS... ]");
       setIsPlaying(true);
-      setCurrentTrackIndex(0); // Reset to first track
+      setCurrentTrackIndex(0);
 
       // Initial visual state
       videoRef.current.style.opacity = "0.9";
@@ -73,7 +73,7 @@ export default function Home() {
       // Delayed status update
       setTimeout(() => {
         if (isPlaying) return;
-        setSystemText("[ SYSTEM ACTIVE :: OBSERVING ]");
+        setSystemText("[ SYSTEM ACTIVE ]");
       }, 2000);
 
     } else {
@@ -82,114 +82,104 @@ export default function Home() {
       videoRef.current.pause();
       
       setIsPlaying(false);
-      setSystemText("[ SYSTEM OFFLINE ]");
-      videoRef.current.style.opacity = "0.4"; // Dimmed but visible
+      setSystemText("[ INITIATE SEQUENCE ]");
+      videoRef.current.style.opacity = "0.6"; // Dimmed state
     }
   };
 
   return (
-    <div className="layout-wrapper">
-      <div className="golden-grid">
+    <div className="layout-wrapper" style={{ height: "100vh", overflow: "hidden" }}>
+      <div className="golden-grid" style={{ height: "100%" }}>
         
-        {/* SIDE COLUMN (Metadata) */}
-        <div className="col-side mb-u4">
-            <div className="meta-data mb-u4">
-                LOC: BRNO-BYSTRC<br/>
-                SEC: C (GRASS)<br/>
-                ID: THE FOAL
+        {/* SIDE COLUMN: STRICT METADATA */}
+        <div 
+            className="col-side" 
+            style={{ 
+                display: "flex", 
+                flexDirection: "column", 
+                justifyContent: "flex-end", 
+                paddingBottom: "var(--u4)" 
+            }}
+        >
+            <div style={{ 
+                fontFamily: "var(--font-mono)", 
+                fontSize: "0.75rem", 
+                color: "var(--c-gray)", 
+                lineHeight: "1.6", 
+                textTransform: "uppercase", 
+                letterSpacing: "0.1em" 
+            }}>
+                <strong style={{ color: "var(--c-ink)" }}>Margarita Ivy</strong><br />
+                <span style={{ display: "block", marginTop: "var(--u7)" }}>Object No. 1</span>
+                Status: <span style={{ color: isPlaying ? "var(--c-signal)" : "var(--c-gray)" }}>
+                    {isPlaying ? "Active" : "Standby"}
+                </span><br />
+                Sector: Brno-Bystrc / C<br />
+                Start: 01.05.2026
+                <br /><br />
+                <span style={{ opacity: 0.5 }}>Representation:</span><br />
+                Karpuchina Gallery
             </div>
-            <div className="meta-data">
-                DATE: 1.5. — 15.10.2026
-            </div>
-            <div className="scroll-line"></div>
         </div>
 
-        {/* MAIN COLUMN (Content) */}
-        <div className="col-main">
+        {/* MAIN COLUMN: POSTER TITLE + GATE */}
+        <div 
+            className="col-main" 
+            style={{ 
+                display: "flex", 
+                flexDirection: "column", 
+                justifyContent: "center" 
+            }}
+        >
             
-            {/* Header */}
-            <section className="mb-u5">
-                <h1>Margarita Ivy's Concept</h1>
-                <p className="is-style-dialog-question">The Glitch in Reality.</p> 
-            </section>
+            <h1 style={{ 
+                fontSize: "var(--f-poster)", 
+                margin: 0, 
+                lineHeight: "0.8", 
+                letterSpacing: "-0.04em", 
+                color: "var(--c-ink)" 
+            }}>
+                THE<br />
+                FOAL
+            </h1>
 
-            {/* Video Gate */}
             <div 
-              className="video-gate mb-u4" 
-              id="videoTrigger" 
-              onClick={handleGateClick}
-              style={{ borderColor: isPlaying ? 'var(--c-signal)' : '' }}
+                className="video-gate" 
+                id="videoTrigger" 
+                onClick={handleGateClick}
+                style={{ 
+                    marginTop: "var(--u5)", 
+                    borderColor: isPlaying ? "var(--c-line)" : "var(--c-line)" 
+                }}
             >
-              <video 
-                ref={videoRef}
-                muted 
-                playsInline 
-                className="gate-video"
-                onEnded={handleVideoEnded}
-                style={{ opacity: isPlaying ? 0.9 : 0.6 }}
-              >
-                <source src={PLAYLIST[0]} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              
-              <div className="gate-overlay">
-                <span className="play-text">Initiate Sequence</span>
-                <span 
-                  className="sub-text"
-                  style={{ color: isPlaying ? 'var(--c-signal)' : 'var(--c-ink)' }}
+                <video 
+                    ref={videoRef}
+                    muted 
+                    playsInline 
+                    className="gate-video"
+                    onEnded={handleVideoEnded}
+                    style={{ opacity: isPlaying ? 0.9 : 0.6 }}
                 >
-                  {systemText}
-                </span>
-              </div>
+                    <source src={PLAYLIST[0]} type="video/mp4" />
+                </video>
+                
+                <div className="gate-overlay">
+                    <span 
+                        className="play-text" 
+                        style={{ 
+                            fontFamily: "var(--font-mono)",
+                            color: isPlaying ? "var(--c-signal)" : "var(--c-accent)",
+                            borderColor: isPlaying ? "var(--c-signal)" : "var(--c-dim)"
+                        }}
+                    >
+                        {systemText}
+                    </span>
+                </div>
             </div>
 
             <audio id="ambientAudio" loop ref={audioRef}>
                 <source src="vacuum-sound.mp3" type="audio/mpeg" />
             </audio>
-
-            {/* Content Body */}
-            <div className="mb-u5">
-                <p>It is not a sculpture. It is a glitch in reality.</p>
-                <p>
-                  Within the cyclic noise of the urban periphery,{" "}
-                  <span className="highlight">The Foal</span> creates a zone of absolute
-                  silence. A forensic record of time. 700 kilograms of transparent
-                  matter preserving a moment of interrupted life.
-                </p>
-                <p>An object that does not belong here, yet must be here.</p>
-            </div>
-
-            {/* Footer */}
-            <div className="footer-info">
-              <div className="footer-col">
-                <strong>Lokace:</strong>
-                <br />
-                Horní náměstí (Sektor C)
-                <br />
-                Brno-Bystrc, CZ
-              </div>
-              <div className="footer-col">
-                <strong>Status:</strong>
-                <br />
-                Veřejná intervence
-                <br />
-                Sbírka TAECAR
-              </div>
-              <div className="footer-col">
-                <strong>Produkce:</strong>
-                <br />
-                A Virtù Research
-                <br />
-                & Technologies
-              </div>
-              <div className="footer-col" style={{ opacity: 0.8, color: "#fff" }}>
-                <strong>Global Representation:</strong>
-                <br />
-                Karpuchina Gallery
-                <br />
-                Prague / Vienna
-              </div>
-            </div>
 
         </div>
         

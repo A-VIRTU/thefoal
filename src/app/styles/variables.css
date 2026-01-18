@@ -1,16 +1,16 @@
 /* 
- * THE FOAL VARIABLES (Void / Math)
+ * THE FOAL VARIABLES (High Contrast / Poster / Math)
  */
 :root {
     /* MATHEMATICAL CONSTANTS */
     --phi: 1.61803398875;
-    --phi-inv: 0.61803398875;
-    --phi-inv-2: 0.38196601125;
+    --phi-inv: 0.61803398875;       /* 1 / Phi */
+    --phi-inv-2: 0.38196601125;     /* 1 / Phi^2 */
     --phi-inv-3: 0.2360679775;
     --phi-inv-4: 0.14589803375;
     --phi-inv-5: 0.09016994375;
 
-    /* UNIT SCALE (DIMENSIONS) - Base: 100vw */
+    /* UNIT SCALE */
     --u0: 100vw;
     --u1: calc(var(--u0) * var(--phi-inv));
     --u2: calc(var(--u1) * var(--phi-inv));
@@ -28,22 +28,49 @@
     --u14: calc(var(--u13) * var(--phi-inv));
     --u15: calc(var(--u14) * var(--phi-inv));
 
-    /* LINES (Derived from Phi-inv scale of 1rem/16px base roughly) */
-    --line-thin: 1px; 
+    --line-thin: 1px;
     --line-medium: 2px;
     --line-thick: 4px;
 
-    /* VOID PALETTE */
-    --c-bg: #050505;       /* Void Black */
-    --c-ink: #e0e0e0;      /* Muted White Text */
-    --c-dim: #555555;      /* Dimmed elements */
-    --c-line: #333333;     /* Subtle Grid Lines */
-    
-    /* ACCENTS */
-    --c-accent: #ffffff;   /* 100% White (Light) */
-    --c-signal: #00ff00;   /* Terminal Green (Active) */
+    /* 
+     * LUMINANCE SCALE (Derived from Phi) 
+     * L0 = 100% (White)
+     * L1 = 61.8%
+     * L2 = 38.2%
+     * L3 = 23.6%
+     * L4 = 14.6%
+     * L5 = 9.0%
+     * L6 = 5.6%
+     * L7 = 3.4%
+     * L8 = 2.1%
+     * L9 = 0% (Black)
+     */
+    --lum-0: 100%;
+    --lum-1: 61.8%;
+    --lum-2: 38.2%;
+    --lum-3: 23.6%;
+    --lum-4: 14.6%;
+    --lum-5: 9.0%;
+    --lum-6: 5.6%;
+    --lum-7: 3.4%;
+    --lum-8: 2.1%;
+    --lum-void: 0%;
 
-    /* ANIMATION TIMINGS */
+    /* SEMANTIC PALETTE (Mapped to Math) */
+    --c-bg: hsl(0, 0%, var(--lum-void));    /* Void (0%) */
+    --c-ink: hsl(0, 0%, var(--lum-0));      /* Pure White (100%) - High Contrast */
+    --c-dim: hsl(0, 0%, var(--lum-2));      /* Metadata (38.2%) */
+    --c-line: hsl(0, 0%, var(--lum-4));     /* Grid (14.6%) - subtle but mathematical */
+    
+    --c-accent: hsl(0, 0%, var(--lum-0));   /* Active Elements (100%) */
+    --c-signal: #00ff00;                    /* Terminal Green (Exception for state) */
+
+    /* --- TYPOGRAPHY (Serif Authority) --- */
+    --font-heading: 'Times New Roman', Times, serif;
+    --font-body: 'Times New Roman', Times, serif;
+    --font-mono: 'Courier New', Courier, monospace; 
+
+    /* ANIMATION */
     --time-fast: 0.382s;
     --time-base: 0.618s;
     --time-slow: 1.618s;

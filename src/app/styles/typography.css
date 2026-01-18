@@ -12,6 +12,7 @@
     --lh-base: 1.618;
 
     /* SIZES */
+    --f-poster: clamp(var(--u5), var(--u3), var(--u1)); /* Brutalist Scale */
     --f-headline: clamp(2rem, var(--u5), 5rem);
     --f-h1: clamp(1.5rem, var(--u6), 3rem);
     --f-body: clamp(1rem, var(--u8), 1.25rem);
