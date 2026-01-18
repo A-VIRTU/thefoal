@@ -68,24 +68,64 @@ section {
   text-transform: uppercase;
 }
 
-/* SCENE 2: VIDEO GATE */
+/* VIDEO GATE STYLING */
 .video-gate {
   border: 1px solid var(--dim-color);
-  padding: 2rem;
+  width: 100%;
+  max-width: 600px; /* Šířka brány */
+  height: 340px;    /* Výška brány */
+  position: relative;
+  overflow: hidden; /* Ořízne vše, co přečuhuje */
   cursor: pointer;
-  transition: all 0.5s ease;
+  transition: border-color 0.5s ease;
   margin-top: 2rem;
+  background: #000;
 }
 
 .video-gate:hover {
   border-color: #fff;
-  background: rgba(255,255,255,0.05);
+}
+
+.gate-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Video vyplní rámeček bez deformace */
+  opacity: 0.6;      /* Lehce ztmavíme, aby to bylo tajemné */
+  transition: opacity 0.5s ease;
+}
+
+.video-gate:hover .gate-video {
+  opacity: 0.9;      /* Po najetí myší se video rozjasní */
+}
+
+.gate-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  pointer-events: none; /* Kliknutí projde skrz text */
 }
 
 .play-text {
-  font-size: 0.8rem;
-  letter-spacing: 0.2em;
+  font-size: 0.9rem;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
+  background: rgba(0,0,0,0.5); /* Čitelnost na videu */
+  padding: 5px 10px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.sub-text {
+  font-size: 0.6rem;
+  margin-top: 10px;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
 }
 
 /* SCROLL INDICATOR */
