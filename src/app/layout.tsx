@@ -3,9 +3,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Margarita Ivy: THE FOAL | Official Concept Archive",
-  description: "Object No. 1. Site-specific intervention. Sector: Brno-Bystrc / C. Status: Active Phase. 700kg epoxy monolith preserving a moment of interrupted life.",
-  keywords: ["Margarita Ivy", "The Foal", "Conceptual Art", "Brno", "Karpuchina Gallery", "A Virtu", "Contemporary Art", "Site-specific"],
-  authors: [{ name: "A VIRTÙ RESEARCH & TECHNOLOGIES" }],
+  description: "Object No. 1. Site-specific intervention. Sector: Brno-Bystrc / C. Status: Active Phase. Taecar Archive Collection.",
+  keywords: ["Margarita Ivy", "The Foal", "Conceptual Art", "Brno", "Taecar", "Karpuchina Gallery", "A Virtu", "Contemporary Art", "Site-specific"],
+  authors: [{ name: "TAECAR ARCHIVE" }],
   robots: "index, follow",
   openGraph: {
     type: "website",
@@ -28,6 +28,9 @@ export const metadata: Metadata = {
     images: ["/og-preview.png"],
   },
   themeColor: "#000000",
+  icons: {
+    icon: "/assets/images/Gemini_Generated_Image_yv2nytyv2nytyv2n.jpeg",
+  },
 };
 
 import "./styles/variables.css";

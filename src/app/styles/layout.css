@@ -10,6 +10,24 @@
 }
 
 /* FOOTER */
+.partner-logo {
+    display: block;
+    width: var(--u5); /* Adjusted size (u4 -> u5) */
+    height: auto;
+    margin-bottom: var(--u9); /* Adjusted to ~line-height visual weight */
+}
+
+@keyframes breathing-logo {
+    0% {
+        opacity: var(--op-base);
+        transform: scale(1);
+    }
+    100% {
+        opacity: var(--op-active);
+        transform: scale(1.02); /* Subtle breathing */
+    }
+}
+
 .footer-strip {
     height: var(--u7);
     display: flex;

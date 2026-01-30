@@ -99,20 +99,31 @@ export default function Home() {
         {/* SIDE COLUMN: STRICT METADATA */}
         <div className="col-side poster-sidebar">
             <div className="credits-block">
-                <strong className="credits-header">COORDINATES</strong><br />
-                LOC: BRNO-BYSTRC / SECTOR C<br />
-                DATE: 01.05.2026 — 15.10.2026<br />
-                STATUS: <span className={isPlaying ? "status-active" : "status-standby"}>
-                    {isPlaying ? "ACTIVE PHASE" : "STANDBY"}
-                </span><br /><br />
+                <div className="mb-u5">
+                    <strong className="credits-header">COORDINATES</strong><br />
+                    LOC: BRNO-BYSTRC / SECTOR C<br />
+                    {/* TODO: Update dates when provided by user (see docx/pdf) */}
+                    DATE: [START DATE] — [END DATE]<br />
+                    STATUS: <span className={isPlaying ? "status-active" : "status-standby"}>
+                        {isPlaying ? "ACTIVE PHASE" : "STANDBY"}
+                    </span>
+                </div>
 
-                <strong className="credits-header">PRODUCTION</strong><br />
-                A VIRTÙ RESEARCH & TECHNOLOGIES<br />
-                COLL. TAECAR ARCHIVE<br /><br />
+                <div className="mb-u5">
+                    {/* TAECAR LOGO REMOVED AS REQUESTED */}
+                    
+                    <strong className="credits-header">PRODUCTION</strong><br />
+                    TAECAR ARCHIVE<br />
+                    COLL. A VIRTÙ RESEARCH & TECHNOLOGIES
+                </div>
 
-                <strong className="credits-header">PARTNERSHIP</strong><br />
-                SUPPORT: MČ BRNO-BYSTRC<br />
-                REPR.: KARPUCHINA GALLERY
+                <div>
+                    <strong className="credits-header">PARTNERSHIP</strong><br />
+                    SUPPORT: MČ BRNO-BYSTRC<br />
+                    REPR.: KARPUCHINA GALLERY<br />
+                    {/* KARPUCHINA LOGO PLACEHOLDER */}
+                    {/* <img src="/assets/images/karpuchina-logo.png" alt="Karpuchina Gallery" className="partner-logo" /> */}
+                </div>
             </div>
         </div>
 

@@ -57,7 +57,7 @@
     --lum-void: 0%;
 
     /* SEMANTIC PALETTE (Mapped to Math) */
-    --c-bg: hsl(0, 0%, var(--lum-void));    /* Void (0%) */
+    --c-bg: hsl(0, 0%, var(--lum-4));       /* Gray (14.6%) - Visible Gray */
     --c-ink: hsl(0, 0%, var(--lum-0));      /* Pure White (100%) - High Contrast */
     --c-dim: hsl(0, 0%, var(--lum-2));      /* Metadata (38.2%) */
     --c-line: hsl(0, 0%, var(--lum-4));     /* Grid (14.6%) - subtle but mathematical */
