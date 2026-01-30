@@ -131,7 +131,7 @@ export default function Home() {
         <div className="col-main poster-main">
             
             <h3 className="poster-concept">
-                MARGARITA IVY'S CONCEPT
+                MARGARITA IVY CONCEPT
             </h3>
 
             <h1 className="poster-headline">
