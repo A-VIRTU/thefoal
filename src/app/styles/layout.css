@@ -86,34 +86,28 @@
     mix-blend-mode: multiply;
     display: block;
     position: absolute;
-    top: -100%;
-    /* left: -10%; */
+    
+    /* Global Positioning & Scaling */
+    top: -100%; /* Desktop: Higher (-100%) */
+    left: 0;
+    transform: scale(var(--phi));
+    transform-origin: center center;
 }
 
 @media (prefers-color-scheme: dark) {
     .signature-element {
-        /* INVERT FOR DARK MODE: 
-           Strategy: 
-           1. Invert + Grayscale -> White Ink on Black Paper.
-           2. Contrast(200%) + Brightness(200%) -> Make Ink blazing white, Paper pure black.
-           3. Lighten -> Only lighter pixels (White Ink) show through.
-           4. Opacity: 1 (Unity/Phi^0) -> Max visibility.
-        */
         filter: invert(1) grayscale(100%) contrast(200%) brightness(200%);
-        mix-blend-mode: lighten; /* Cleaner than screen for high contrast */
-        opacity: 1; /* Unity (Phi^0) - Max brightness per request */
+        mix-blend-mode: lighten; 
     }
     
     .partner-logo {
-        /* Invert logo for visibility */
-        filter: invert(1) sepia(100%) hue-rotate(140deg) saturate(var(--phi-inv)); /* 0.618 */
+        filter: invert(1) sepia(100%) hue-rotate(140deg) saturate(var(--phi-inv)); 
     }
 }
 
 @media (max-width: 768px) {
     .signature-element {
-        width: var(--u2); /* Decreased to u2 (matches desktop base) */
-        top: -100%; 
+        top: -70%; /* Mobile: Lower (-70%) to match visual preference */
     }
 }
 
