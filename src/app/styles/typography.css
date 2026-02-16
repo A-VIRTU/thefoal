@@ -27,7 +27,9 @@
     --f-concept: clamp(var(--u9), var(--u8), var(--u7));    /* "Concept" Header */
     --f-body: clamp(var(--u9), var(--u8), var(--u7));       /* Body text */
     --f-small: clamp(var(--u10), var(--u9), var(--u8));     /* Metadata */
+    --f-small: clamp(var(--u10), var(--u9), var(--u8));     /* Metadata */
     --f-mono: var(--f-small);                               /* Unified mono size */
+    --f-concept-large: clamp(var(--u7), var(--u6), var(--u5)); /* Concept Header Large (Phi^2 shift) */
 }
 
 body {
@@ -74,11 +76,26 @@ p {
 .poster-concept {
     font-family: var(--font-heading);
     font-weight: 300;
-    font-size: var(--f-concept); /* Strict Phi clamp */
-    margin: 0 0 var(--u6) 0;
+    font-size: var(--f-concept-large); /* Scaled up by Phi^2 */
+    margin-bottom: var(--u6); /* Standard line spacing */
     color: var(--c-accent); /* Spec: Headers use Accent/Teal */
     letter-spacing: var(--ls-widest);
     text-transform: uppercase;
+    line-height: var(--lh-poster); /* Tight overlap like Headline */
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    margin-top: 0;
+}
+
+.concept-line {
+    display: block;
+    margin-left: var(--u4);
+}
+
+.headline-indent {
+    display: inline-block;
+    transform: translateX(var(--u5));
 }
 
 .poster-headline {

@@ -74,25 +74,20 @@
     height: auto;  
     margin-bottom: var(--u9);
     /* Toning the logo to the page palette */  
-    filter: sepia(100%) hue-rotate(140deg) saturate(0.5);   
+    /* Invert logo for visibility */
+    filter: invert(1) sepia(100%) hue-rotate(140deg) saturate(var(--phi-inv)); /* 0.618 */
 }
 
-/* Signature Integration */
+/* Signature Element (Margarita Ivy) */
 .signature-element {
-    display: block;
-    width: var(--u1); /* Maximum size (Phi Step 1) */
-    
-    /* ABSOLUTE POSITIONING to overlap with Concept Header */
-    position: absolute;
-    top: -261.8%; /* Phi^2 offset: Much higher per request */
-    left: -20%; /* Shift left to look natural */
-    z-index: 1; /* Below text (text should be >1) */
-    
-    /* BLENDING */
+    width: var(--u2);
+    z-index: 10;
     filter: grayscale(100%) contrast(150%) brightness(110%);
     mix-blend-mode: multiply;
-    opacity: var(--phi-inv); /* 0.618 (Strict Phi) */
-    /* Rotation removed per user constraints */
+    display: block;
+    position: absolute;
+    top: -100%;
+    /* left: -10%; */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -168,4 +163,12 @@
 /* Production / Credits Block - Reverted to inherit but with tight spacing */
 .credits-block {
     line-height: var(--lh-tight); /* Unity (1.0) - Tighter packing per request */
+}
+
+/* Concept Container for Relative Positioning */
+.concept-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }

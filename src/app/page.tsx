@@ -122,20 +122,22 @@ export default function Home() {
         {/* MAIN COLUMN: POSTER TITLE + GATE */}
         <div className="col-main poster-main">
             
-            <div className="concept-container mt-u4 ml-u6" style={{ position: "relative", width: "fit-content" }}>
+            <div className="concept-container mt-u4 ml-u6">
                 <img 
                     src="/assets/images/signature.png" 
                     alt="Margarita Ivy" 
                     className="signature-element"
                 />
-                <h3 className="poster-concept" style={{ position: "relative", zIndex: 2, transform: "translateX(var(--u4))" }}>
-                    MARGARITA IVY CONCEPT
+                <h3 className="poster-concept">
+                    <span className="concept-line">MARGARITA</span>
+                    <span className="concept-line">IVY</span>
+                    <span className="concept-line">CONCEPT</span>
                 </h3>
             </div>
 
 
             <h1 className="poster-headline ml-u6">
-                <span style={{ display: "inline-block", transform: "translateX(var(--u5))" }}>THE</span><br />
+                <span className="headline-indent">THE</span><br />
                 FOAL
             </h1>
 
