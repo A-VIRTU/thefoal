@@ -40,8 +40,8 @@
         --f-h1: var(--u5);               /* Kept Larger */
         --f-concept: var(--u7);          /* Kept Larger */
         --f-body: var(--u7);             /* Kept Larger */
-        --f-small: var(--u8);            /* Kept Larger */
-        --f-mono: var(--u8);             /* Kept Larger */
+        --f-small: var(--u7);            /* Increased again (u8 -> u7) */
+        --f-mono: var(--u7);             /* Increased again (u8 -> u7) */
         --f-concept-large: var(--u6);    /* Reverted to u6 */
     }
 }
