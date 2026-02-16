@@ -148,6 +148,7 @@
 .mt-u3 { margin-top: var(--u3); }
 .mt-u4 { margin-top: var(--u4); }
 .ml-u4 { margin-left: var(--u4); }
+.ml-u6 { margin-left: var(--u6); }
 
 /* Footer Info */
 .footer-info {

@@ -122,7 +122,7 @@ export default function Home() {
         {/* MAIN COLUMN: POSTER TITLE + GATE */}
         <div className="col-main poster-main">
             
-            <div className="concept-container mt-u4" style={{ position: "relative", width: "fit-content" }}>
+            <div className="concept-container mt-u4 ml-u6" style={{ position: "relative", width: "fit-content" }}>
                 <img 
                     src="/assets/images/signature.png" 
                     alt="Margarita Ivy" 
@@ -134,7 +134,7 @@ export default function Home() {
             </div>
 
 
-            <h1 className="poster-headline">
+            <h1 className="poster-headline ml-u6">
                 <span style={{ display: "inline-block", transform: "translateX(var(--u5))" }}>THE</span><br />
                 FOAL
             </h1>
@@ -165,13 +165,15 @@ export default function Home() {
                 <source src="vacuum-sound.mp3" type="audio/mpeg" />
             </audio>
 
-            {/* PRODUCTION moved to bottom of Main Column per user request */}
-            <div className="credits-block mt-u3 mb-u3">
-                <strong className="credits-header">PRODUCTION</strong><br />
-                TAECAR ARCHIVE<br />
-                COLL. A VIRTÙ RESEARCH & TECHNOLOGIES
-            </div>
 
+
+        </div>
+        
+        {/* PRODUCTION Column (New Position) */}
+        <div className="credits-block mt-u3 mb-u3">
+            <strong className="credits-header">PRODUCTION</strong><br />
+            TAECAR ARCHIVE<br />
+            COLL. A VIRTÙ RESEARCH & TECHNOLOGIES
         </div>
         
       </div>
