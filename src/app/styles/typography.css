@@ -6,13 +6,23 @@
     --font-body: 'Times New Roman', Times, serif;
     --font-mono: 'Courier New', Courier, monospace; 
 
-    /* LINE HEIGHTS (Derived from Phi additive powers) */
+    /* LINE HEIGHTS (Derived from Strictly Multiplicative Phi Harmonics) */
+    /* 
+       Principle: Constants derived only via multiplication/division.
+       Harmonic Series of Phi-Inverse:
+       1 * Phi-Inv = 0.618
+       2 * Phi-Inv = 1.236 (Snug/Meta)
+       3 * Phi-Inv = 1.854 (Loose)
+       
+       Halves:
+       Phi * 0.5 = 0.809 (Poster)
+    */
     --lh-tight: 1;                                            /* Unity */
-    --lh-poster: calc(var(--phi-inv) + var(--phi-inv-3));     /* ~0.854 (0.618 + 0.236) */
-    --lh-snug: calc(var(--phi) - var(--phi-inv-2));           /* ~1.236 (1.618 - 0.382) */
-    --lh-meta: calc(var(--phi) - var(--phi-inv-3));           /* ~1.382 (1.618 - 0.236) */
+    --lh-poster: calc(var(--phi) * 0.5);                      /* ~0.809 */
+    --lh-snug: calc(2 * var(--phi-inv));                      /* ~1.236 */
+    --lh-meta: calc(2 * var(--phi-inv));                      /* ~1.236 */
     --lh-base: var(--phi);                                    /* 1.618 */
-    --lh-loose: calc(var(--phi) + var(--phi-inv-3));          /* ~1.854 (1.618 + 0.236) */
+    --lh-loose: calc(3 * var(--phi-inv));                     /* ~1.854 */
 
     /* SIZES (Strict Phi Scale) */
     --f-poster: clamp(var(--u5), var(--u3), var(--u1));     /* The Monolith */
@@ -70,7 +80,7 @@ p {
     font-weight: 300;
     font-size: var(--f-concept); /* Strict Phi clamp */
     margin: 0 0 var(--u6) 0;
-    color: var(--c-gray);
+    color: var(--c-accent); /* Spec: Headers use Accent/Teal */
     letter-spacing: var(--ls-widest);
     text-transform: uppercase;
 }
@@ -86,7 +96,7 @@ p {
 .credits-block {
     font-family: var(--font-mono);
     font-size: var(--f-small); /* was 0.7rem */
-    color: var(--c-gray);
+    color: var(--c-dim); /* Spec: Metadata use Dim/Teal */
     line-height: var(--lh-loose); /* was 1.8 */
     text-transform: uppercase;
     letter-spacing: var(--ls-wide);
@@ -103,5 +113,5 @@ p {
 }
 
 .status-standby {
-    color: var(--c-gray);
+    color: var(--c-dim);
 }

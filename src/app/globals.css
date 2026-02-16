@@ -16,7 +16,7 @@ html, body {
 
 /* VIDEO GATE (Ported & Adapted to Variables) */
 .video-gate {
-  border: var(--line-thin) solid var(--c-line);
+  border: 1px solid var(--c-line); /* Standardized border width */
   width: 100%;
   max-width: 100%; 
   height: var(--u3); /* Golden Ratio height */
@@ -25,7 +25,7 @@ html, body {
   overflow: hidden;
   cursor: pointer;
   transition: border-color var(--time-base) ease;
-  background: #000;
+  background: var(--c-void-bg); /* The Void */
 }
 
 .video-gate:hover {
@@ -36,7 +36,7 @@ html, body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.6;
+  opacity: var(--op-base); /* was 0.6 */
   transition: opacity var(--time-base) ease;
 }
 
@@ -63,18 +63,19 @@ html, body {
   font-size: var(--f-small);
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  background: rgba(0,0,0,0.7);
-  padding: var(--u10) var(--u9); /* Replaces 5px 10px */
-  border: var(--line-thin) solid rgba(255,255,255,0.3);
+  background: rgba(15, 42, 47, 0.8); /* Semi-transparent void for readability */
+  padding: var(--u10) var(--u9);
+  border: 1px solid var(--c-dim);
   color: var(--c-accent);
 }
 
 .sub-text {
   font-family: var(--font-mono);
-  font-size: var(--f-small); /* Replaces 0.7em */
-  margin-top: var(--u9); /* Replaces 10px */
+  font-size: var(--f-small);
+  margin-top: var(--u9);
   letter-spacing: 0.1em;
   opacity: 0.8;
+  color: var(--c-dim);
 }
 
 /* SCROLL LINE */

@@ -96,13 +96,13 @@ export default function Home() {
     <div className="layout-wrapper">
       <div className="golden-grid">
         
-        {/* SIDE COLUMN: STRICT METADATA */}
         <div className="col-side poster-sidebar">
+            {/* TOP GROUP: COORDINATES & PARTNERSHIP */}
             <div className="credits-block">
                 <div className="mb-u5">
                     <strong className="credits-header">COORDINATES</strong><br />
                     LOC: BRNO-BYSTRC / SECTOR C<br />
-                    {/* TODO: Update dates when provided by user (see docx/pdf) */}
+                    {/* TODO: Update dates when provided by user */}
                     DATE: [START DATE] — [END DATE]<br />
                     STATUS: <span className={isPlaying ? "status-active" : "status-standby"}>
                         {isPlaying ? "ACTIVE PHASE" : "STANDBY"}
@@ -110,29 +110,28 @@ export default function Home() {
                 </div>
 
                 <div className="mb-u5">
-                    {/* TAECAR LOGO REMOVED AS REQUESTED */}
-                    
-                    <strong className="credits-header">PRODUCTION</strong><br />
-                    TAECAR ARCHIVE<br />
-                    COLL. A VIRTÙ RESEARCH & TECHNOLOGIES
-                </div>
-
-                <div>
                     <strong className="credits-header">PARTNERSHIP</strong><br />
                     SUPPORT: MČ BRNO-BYSTRC<br />
                     REPR.: KARPUCHINA GALLERY<br />
-                    {/* KARPUCHINA LOGO PLACEHOLDER */}
-                    {/* <img src="/assets/images/karpuchina-logo.png" alt="Karpuchina Gallery" className="partner-logo" /> */}
                 </div>
             </div>
+            
+            {/* PRODUCTION moved to Main Column */}
         </div>
 
         {/* MAIN COLUMN: POSTER TITLE + GATE */}
         <div className="col-main poster-main">
             
-            <h3 className="poster-concept">
-                MARGARITA IVY CONCEPT
-            </h3>
+            <div className="concept-container" style={{ position: "relative", width: "fit-content" }}>
+                <img 
+                    src="/assets/images/signature.png" 
+                    alt="Margarita Ivy" 
+                    className="signature-element"
+                />
+                <h3 className="poster-concept" style={{ position: "relative", zIndex: 2 }}>
+                    MARGARITA IVY CONCEPT
+                </h3>
+            </div>
 
             <h1 className="poster-headline">
                 THE<br />
@@ -164,6 +163,13 @@ export default function Home() {
             <audio id="ambientAudio" loop ref={audioRef}>
                 <source src="vacuum-sound.mp3" type="audio/mpeg" />
             </audio>
+
+            {/* PRODUCTION moved to bottom of Main Column per user request */}
+            <div className="credits-block mt-u4 mb-u4">
+                <strong className="credits-header">PRODUCTION</strong><br />
+                TAECAR ARCHIVE<br />
+                COLL. A VIRTÙ RESEARCH & TECHNOLOGIES
+            </div>
 
         </div>
         

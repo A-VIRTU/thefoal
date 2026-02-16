@@ -1,15 +1,53 @@
 /* 
- * THE FOAL VARIABLES (High Contrast / Poster / Math)
+ * THE FOAL VARIABLES (Etheric Resin & Transformative Teal)
+ * Version: 2.0 (Organic/Chemical Shift)
  */
 :root {
-    /* MATHEMATICAL CONSTANTS */
+    /* --- MATHEMATICAL CONSTANTS (Immutable) --- */
     --phi: 1.61803398875;
-    --phi-inv: 0.61803398875;       /* 1 / Phi */
-    --phi-inv-2: 0.38196601125;     /* 1 / Phi^2 */
+    --phi-inv: 0.61803398875;
+    --phi-inv-2: 0.38196601125;
     --phi-inv-3: 0.2360679775;
-    --phi-inv-4: 0.14589803375;
-    --phi-inv-5: 0.09016994375;
 
+    /* --- CHROMATIC DEFINITION --- */
+    /* Deep Teal (The Chemical) */
+    --hue-teal: 185;
+    /* Warm Amber (The Organic) */
+    --hue-resin: 40;
+    
+    /* --- SEMANTIC LAYERS --- */
+    
+    /* BACKGROUND: Off-White with Resin tint. 
+       Feels like paper or gallery wall. */
+    --c-bg: hsl(var(--hue-resin), 15%, 94%);
+    
+    /* INK: Instead of black, using deep oxidized depth. 
+       For text and main elements. */
+    --c-ink: hsl(var(--hue-teal), 60%, 12%);
+    
+    /* DIM: Desaturated teal for metadata and technical labels.
+       Evokes cold metal of surgical instruments. */
+    --c-dim: hsl(var(--hue-teal), 20%, 55%);
+    
+    /* GRID: Subtle, almost invisible structure. */
+    --c-line: hsl(var(--hue-teal), 15%, 85%);
+    
+    /* ACCENT: Vivid teal for active interface elements. */
+    --c-accent: hsl(var(--hue-teal), 100%, 28%);
+    
+    /* SIGNAL: Amber glow. Used for "Active" and "Glitch" states. */
+    --c-signal: hsl(var(--hue-resin), 80%, 50%);
+
+    /* --- THE VOID (Contrast Mode for Video Gate) --- */
+    /* Video player must remain dark – it is a hole in reality. */
+    --c-void-bg: hsl(var(--hue-teal), 70%, 8%);   
+    --c-void-text: hsl(var(--hue-resin), 20%, 90%);
+
+    /* --- ANIMATION & SPACING --- */
+    --time-fast: 0.382s;
+    --time-base: 0.618s;
+    --time-slow: 1.618s;
+    
     /* UNIT SCALE */
     --u0: 100vw;
     --u1: calc(var(--u0) * var(--phi-inv));
@@ -21,86 +59,23 @@
     --u7: calc(var(--u6) * var(--phi-inv));
     --u8: calc(var(--u7) * var(--phi-inv));
     --u9: calc(var(--u8) * var(--phi-inv));
-    --u10: calc(var(--u9) * var(--phi-inv));
-    --u11: calc(var(--u10) * var(--phi-inv));
-    --u12: calc(var(--u11) * var(--phi-inv));
-    --u13: calc(var(--u12) * var(--phi-inv));
-    --u14: calc(var(--u13) * var(--phi-inv));
-    --u15: calc(var(--u14) * var(--phi-inv));
-
-    --line-thin: 1px;
-    --line-medium: 2px;
-    --line-thick: 4px;
-
-    /* 
-     * LUMINANCE SCALE (Derived from Phi) 
-     * L0 = 100% (White)
-     * L1 = 61.8%
-     * L2 = 38.2%
-     * L3 = 23.6%
-     * L4 = 14.6%
-     * L5 = 9.0%
-     * L6 = 5.6%
-     * L7 = 3.4%
-     * L8 = 2.1%
-     * L9 = 0% (Black)
-     */
-    --lum-0: 100%;
-    --lum-1: 61.8%;
-    --lum-2: 38.2%;
-    --lum-3: 23.6%;
-    --lum-4: 14.6%;
-    --lum-5: 9.0%;
-    --lum-6: 5.6%;
-    --lum-7: 3.4%;
-    --lum-8: 2.1%;
-    --lum-void: 0%;
-
-    /* SEMANTIC PALETTE (Mapped to Math) */
-    --c-bg: hsl(0, 0%, var(--lum-4));       /* Gray (14.6%) - Visible Gray */
-    --c-ink: hsl(0, 0%, var(--lum-0));      /* Pure White (100%) - High Contrast */
-    --c-dim: hsl(0, 0%, var(--lum-2));      /* Metadata (38.2%) */
-    --c-line: hsl(0, 0%, var(--lum-4));     /* Grid (14.6%) - subtle but mathematical */
     
-    --c-accent: hsl(0, 0%, var(--lum-0));   /* Active Elements (100%) */
-    --c-signal: #00ff00;                    /* Terminal Green (Exception for state) */
-
     /* OPACITY (Phi-Based) */
     --op-base: var(--phi-inv);     /* ~0.618 */
     --op-dim: var(--phi-inv-2);    /* ~0.382 */
-    --op-faint: var(--phi-inv-3);  /* ~0.236 */
-    --op-active: 0.9;              /* High visibility state */
-
-    /* LETTER SPACING (Phi-Based) */
-    --ls-tight-2: -0.04em; /* Approx -0.09/2 or just a specific tight lock */ 
-    --ls-tight: -0.02em;
-    --ls-base: 0em;
-    --ls-wide: 0.05em;
-    --ls-wider: 0.1em;
-    --ls-widest: 0.4em;
-
-    /* --- TYPOGRAPHY (Serif Authority) --- */
+    --op-active: 0.9;
+    
+    /* TYPOGRAPHY */
     --font-heading: 'Times New Roman', Times, serif;
     --font-body: 'Times New Roman', Times, serif;
-    --font-mono: 'Courier New', Courier, monospace; 
-
-    /* ANIMATION */
-    --time-fast: 0.382s;
-    --time-base: 0.618s;
-    --time-slow: 1.618s;
-
-    /* SPACING */
-    --space-section: var(--u4);
-    --space-block: var(--u5);
-    --space-line: var(--u7);
-    --space-item: var(--u8);
-    --space-text: var(--u9);
-    --space-page: var(--u6);
+    --font-mono: 'Courier New', Courier, monospace;
     
-    /* LAYOUT VARS */
+    /* SPACING VARS */
     --layout-padding-x: var(--u6);
     --layout-padding-y: var(--u6);
-    --content-max-width: 100%;
+    
+    /* LETTER SPACING */
+    --ls-wider: 0.1em;
 }
 
 @media (min-width: 768px) {

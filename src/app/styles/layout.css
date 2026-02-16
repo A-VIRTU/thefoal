@@ -1,120 +1,137 @@
 /*
- * LAYOUT (Golden Grid)
+ * LAYOUT: Organic Laboratory (Etheric Resin)
  */
-.layout-wrapper {
-    width: 100%;
-    min-height: 100vh;
-    position: relative;
-    padding: var(--layout-padding-y) var(--layout-padding-x);
-    box-sizing: border-box;
+
+.layout-wrapper {  
+    width: 100%;  
+    min-height: 100vh;  
+    padding: var(--layout-padding-y) var(--layout-padding-x);  
+    box-sizing: border-box;  
+      
+    /* Organic background application */  
+    background-color: var(--c-bg);  
+    color: var(--c-ink);  
+    transition: background-color var(--time-slow) ease;  
 }
 
-/* FOOTER */
-.partner-logo {
+/* VIDEO GATE: Dark monolith in a light space */  
+.video-gate-container {  
+    margin-top: var(--u4);  
+    
+    /* Inverted colors create a "hole" in the layout */  
+    background-color: var(--c-void-bg);  
+    border: 1px solid var(--c-accent);   
+      
+    max-width: 600px;  
+    position: relative;  
+    overflow: hidden;  
+      
+    /* Teal shadow for depth */  
+    box-shadow: 0 20px 40px -10px rgba(15, 42, 47, 0.15);  
+    transition: all var(--time-base) ease;  
+}
+
+/* Active State - Chemical Reaction */  
+.video-gate-container.is-active {  
+    border-color: var(--c-signal); /* Amber contour */  
+    box-shadow: 0 0 30px rgba(220, 190, 136, 0.2); /* Amber glow */  
+}
+
+.gate-video-element {  
+    opacity: var(--op-base);  
+    transition: opacity var(--time-base) ease;  
+    width: 100%;  
     display: block;
-    width: var(--u5); /* Adjusted size (u4 -> u5) */
-    height: auto;
-    margin-bottom: var(--u9); /* Adjusted to ~line-height visual weight */
+    /* Inactive filter unifies video with aesthetic */  
+    filter: grayscale(20%) sepia(10%) hue-rotate(130deg);  
 }
 
-@keyframes breathing-logo {
-    0% {
-        opacity: var(--op-base);
-        transform: scale(1);
-    }
-    100% {
-        opacity: var(--op-active);
-        transform: scale(1.02); /* Subtle breathing */
-    }
+.video-gate-container.is-active .gate-video-element {  
+    opacity: 1;  
+    filter: none; /* Full color during playback */  
 }
 
-.footer-strip {
-    height: var(--u7);
-    display: flex;
-    align-items: center;
-    border-top: 1px solid var(--c-line);
-    margin-top: auto;
-    padding-left: var(--layout-padding-x);
+/* Text Overlay in Gate */  
+.play-text {
+    transition: all var(--time-base) ease;
 }
 
-/* VIDEO GATE STRICT */
-.video-gate-container {
-    margin-top: var(--u4);
-    border: 1px solid var(--c-line);
-    max-width: 600px;
-    transition: border-color var(--time-base) ease;
+.video-gate-container.is-active .play-text {  
+    color: var(--c-signal);  
+    border-color: var(--c-signal);  
+    text-shadow: 0 0 10px rgba(220, 190, 136, 0.4);  
 }
 
-.video-gate-container.is-active {
-    border-color: var(--c-line); /* Or signal if desired, but user requested subtle */
+.video-gate-container:not(.is-active) .play-text {  
+    color: var(--c-void-text); /* Light bone on dark background */  
+    border-color: var(--c-dim);  
 }
 
-.gate-video-element {
-    opacity: var(--op-base); /* was 0.5 */
-    transition: opacity var(--time-base) ease;
-    width: 100%;
+/* Footer & Logo */  
+.partner-logo {  
+    display: block;  
+    width: var(--u5);  
+    height: auto;  
+    margin-bottom: var(--u9);
+    /* Toning the logo to the page palette */  
+    filter: sepia(100%) hue-rotate(140deg) saturate(0.5);   
+}
+
+/* Signature Integration */
+.signature-element {
     display: block;
+    width: var(--u1); /* Maximum size (Phi Step 1) */
+    
+    /* ABSOLUTE POSITIONING to overlap with Concept Header */
+    position: absolute;
+    top: -261.8%; /* Phi^2 offset: Much higher per request */
+    left: -20%; /* Shift left to look natural */
+    z-index: 1; /* Below text (text should be >1) */
+    
+    /* BLENDING */
+    filter: grayscale(100%) contrast(150%) brightness(110%);
+    mix-blend-mode: multiply;
+    opacity: 0.6; /* Reduced opacity for background effect */
+    /* Rotation removed per user constraints */
 }
 
-.video-gate-container.is-active .gate-video-element {
-    opacity: var(--op-active);
-}
-
-.gate-text-overlay {
-    font-family: var(--font-mono);
-    font-size: var(--f-mono); /* was 0.8rem */
-    letter-spacing: var(--ls-wider);
-}
-
-.video-gate-container.is-active .play-text {
-    color: var(--c-signal);
-    border-color: var(--c-signal);
-}
-
-.video-gate-container:not(.is-active) .play-text {
-    color: var(--c-accent);
-    border-color: var(--c-dim);
-}
-
+/* Grid System matches previous logic */
 .golden-grid {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-end; /* Align bottom */
+    align-items: stretch; /* CHANGED from flex-end to stretch to allow full-height sidebar distribution */
     width: 100%;
     gap: var(--u6);
 }
 
 .col-main {
-    flex: 999 1 var(--u1); /* Takes majority space */
-    min-width: var(--u4);  /* Replaces 300px */
+    flex: 999 1 var(--u1);
+    min-width: var(--u4);
+    /* Ensure main content aligns bottom if needed, or let it flow naturally */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Keep video/poster at bottom of its column */
 }
 
 .col-side {
-    flex: 1 1 var(--u3); /* Takes sidebar space */
-    min-width: var(--u5); /* Replaces 200px */
+    flex: 1 1 var(--u3);
+    min-width: var(--u5);
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-between; /* CHANGED from flex-end to push Partnership up and Production down */
 }
 
 /* Utilities */
 .mb-u4 { margin-bottom: var(--u4); }
 .mb-u5 { margin-bottom: var(--u5); }
+.mt-u4 { margin-top: var(--u4); }
 
-/* Dialog Question Style (from Kreativum) */
-.is-style-dialog-question {
-    font-weight: 700;
-    color: var(--c-accent);
-    position: relative;
-    font-style: italic;
-}
-
-/* FOOTER */
+/* Footer Info */
 .footer-info {
     font-family: var(--font-mono);
-    font-size: var(--f-small);
+    font-size: var(--u9); /* Small technical text */
     color: var(--c-dim);
-    border-top: var(--line-thin) solid var(--c-line);
+    border-top: 1px solid var(--c-line);
     padding-top: var(--u7);
     margin-top: var(--u4);
     display: flex;
@@ -122,19 +139,4 @@
     flex-wrap: wrap;
     gap: var(--u6);
     width: 100%;
-}
-
-.poster-sidebar {
-    padding-bottom: var(--u4);
-}
-
-.poster-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.footer-col {
-    flex: 1;
-    min-width: var(--u6); /* Replaces 150px */
 }
