@@ -100,7 +100,7 @@ p {
 
 .credits-header {
     color: var(--c-ink);
-    border-bottom: 1px solid var(--c-line);
+
     font-weight: bold;
 }
 
