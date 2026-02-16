@@ -32,6 +32,20 @@
     --f-concept-large: clamp(var(--u7), var(--u6), var(--u5)); /* Concept Header Large (Phi^2 shift) */
 }
 
+@media (max-width: 768px) {
+    :root {
+        /* Mobile Scaling: Headers returned to Base, Body/Meta kept larger */
+        --f-poster: var(--u3);           /* Reverted to u3 */
+        --f-headline: var(--u4);         /* Kept Larger */
+        --f-h1: var(--u5);               /* Kept Larger */
+        --f-concept: var(--u7);          /* Kept Larger */
+        --f-body: var(--u7);             /* Kept Larger */
+        --f-small: var(--u8);            /* Kept Larger */
+        --f-mono: var(--u8);             /* Kept Larger */
+        --f-concept-large: var(--u6);    /* Reverted to u6 */
+    }
+}
+
 body {
     font-family: var(--font-body);
     font-size: var(--f-body);

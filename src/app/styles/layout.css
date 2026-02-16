@@ -110,6 +110,13 @@
     }
 }
 
+@media (max-width: 768px) {
+    .signature-element {
+        width: var(--u2); /* Decreased to u2 (matches desktop base) */
+        top: -100%; 
+    }
+}
+
 /* Grid System matches previous logic */
 .golden-grid {
     display: flex;
