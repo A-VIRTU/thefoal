@@ -2,8 +2,8 @@
  * TYPOGRAPHY (Archival / Serif)
  */
 :root {
-    --font-heading: 'Times New Roman', Times, serif; 
-    --font-body: 'Times New Roman', Times, serif;
+    --font-heading: var(--font-crimson), 'Times New Roman', serif; 
+    --font-body: var(--font-crimson), 'Times New Roman', serif;
     --font-mono: 'Courier New', Courier, monospace; 
 
     /* LINE HEIGHTS (Strict Integer Powers of Phi) */

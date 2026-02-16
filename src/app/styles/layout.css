@@ -164,3 +164,8 @@
     gap: var(--u6);
     width: 100%;
 }
+
+/* Production / Credits Block - Reverted to inherit but with tight spacing */
+.credits-block {
+    line-height: var(--lh-tight); /* Unity (1.0) - Tighter packing per request */
+}
