@@ -6,23 +6,19 @@
     --font-body: 'Times New Roman', Times, serif;
     --font-mono: 'Courier New', Courier, monospace; 
 
-    /* LINE HEIGHTS (Derived from Strictly Multiplicative Phi Harmonics) */
+    /* LINE HEIGHTS (Strict Integer Powers of Phi) */
     /* 
-       Principle: Constants derived only via multiplication/division.
-       Harmonic Series of Phi-Inverse:
-       1 * Phi-Inv = 0.618
-       2 * Phi-Inv = 1.236 (Snug/Meta)
-       3 * Phi-Inv = 1.854 (Loose)
-       
-       Halves:
-       Phi * 0.5 = 0.809 (Poster)
+       Principle: Use ONLY integer powers of Phi.
+       Phi^0 = 1 (Unity)
+       Phi^1 = 1.618 (Base)
+       Phi^-1 = 0.618 (Tight)
     */
-    --lh-tight: 1;                                            /* Unity */
-    --lh-poster: calc(var(--phi) * 0.5);                      /* ~0.809 */
-    --lh-snug: calc(2 * var(--phi-inv));                      /* ~1.236 */
-    --lh-meta: calc(2 * var(--phi-inv));                      /* ~1.236 */
-    --lh-base: var(--phi);                                    /* 1.618 */
-    --lh-loose: calc(3 * var(--phi-inv));                     /* ~1.854 */
+    --lh-tight: 1;                                            /* Unity (Phi^0) */
+    --lh-poster: var(--phi-inv);                              /* 0.618 (Phi^-1) - Very tight packing */
+    --lh-snug: 1;                                             /* Unity (Phi^0) - Standard */
+    --lh-meta: 1;                                             /* Unity (Phi^0) - Standard */
+    --lh-base: var(--phi);                                    /* 1.618 (Phi^1) */
+    --lh-loose: var(--phi);                                   /* 1.618 (Phi^1) - Reused Base */
 
     /* SIZES (Strict Phi Scale) */
     --f-poster: clamp(var(--u5), var(--u3), var(--u1));     /* The Monolith */

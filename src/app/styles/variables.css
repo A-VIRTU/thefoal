@@ -84,3 +84,28 @@
         --layout-padding-y: var(--u5);
     }
 }
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* DARK MODE: The Void Laboratory */
+        
+        /* BACKGROUND: Deepest oxidized teal, almost black. */
+        --c-bg: hsl(var(--hue-teal), 60%, 5%);
+        
+        /* INK: Pale bone/resin light. */
+        --c-ink: hsl(var(--hue-resin), 15%, 85%);
+        
+        /* DIM: Subdued teal. */
+        --c-dim: hsl(var(--hue-teal), 30%, 40%);
+        
+        /* LINE: Subtle grid. */
+        --c-line: hsl(var(--hue-teal), 30%, 20%);
+        
+        /* ACCENT: Glowing teal. */
+        --c-accent: hsl(var(--hue-teal), 80%, 50%);
+        
+        /* VOID: Absolute black. */
+        --c-void-bg: #000000;
+        --c-void-text: var(--c-ink);
+    }
+}

@@ -91,8 +91,28 @@
     /* BLENDING */
     filter: grayscale(100%) contrast(150%) brightness(110%);
     mix-blend-mode: multiply;
-    opacity: 0.6; /* Reduced opacity for background effect */
+    opacity: var(--phi-inv); /* 0.618 (Strict Phi) */
     /* Rotation removed per user constraints */
+}
+
+@media (prefers-color-scheme: dark) {
+    .signature-element {
+        /* INVERT FOR DARK MODE: 
+           Strategy: 
+           1. Invert + Grayscale -> White Ink on Black Paper.
+           2. Contrast(200%) + Brightness(200%) -> Make Ink blazing white, Paper pure black.
+           3. Lighten -> Only lighter pixels (White Ink) show through.
+           4. Opacity: 1 (Unity/Phi^0) -> Max visibility.
+        */
+        filter: invert(1) grayscale(100%) contrast(200%) brightness(200%);
+        mix-blend-mode: lighten; /* Cleaner than screen for high contrast */
+        opacity: 1; /* Unity (Phi^0) - Max brightness per request */
+    }
+    
+    .partner-logo {
+        /* Invert logo for visibility */
+        filter: invert(1) sepia(100%) hue-rotate(140deg) saturate(var(--phi-inv)); /* 0.618 */
+    }
 }
 
 /* Grid System matches previous logic */
@@ -122,9 +142,12 @@
 }
 
 /* Utilities */
+.mb-u3 { margin-bottom: var(--u3); }
 .mb-u4 { margin-bottom: var(--u4); }
 .mb-u5 { margin-bottom: var(--u5); }
+.mt-u3 { margin-top: var(--u3); }
 .mt-u4 { margin-top: var(--u4); }
+.ml-u4 { margin-left: var(--u4); }
 
 /* Footer Info */
 .footer-info {
